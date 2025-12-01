@@ -24,9 +24,7 @@
             box-shadow: 0 0 32px rgba(0,0,0,0.10);
             border-radius: 10px;
         }
-        h1, h2, h3 {
-            color: #2d5aa6;
-        }
+        h1, h2, h3 { color: #2d5aa6; }
         h1 { margin-top: 0; font-size: 2.4em; }
         hr { margin: 2em 0; border: none; border-bottom: 1px solid #e0e0e0;}
         section { margin-bottom: 2.5em; }
@@ -131,7 +129,7 @@
       Siddhesh Gampawar
     </div>
     <div id="top-right-link">
-        <a href="https://iserve-my.sharepoint.com/:w:/r/personal/siddhesh_gampawar_pattern_com/Documents/SOP%20VA%20QC%20(1).docx?d=wc5bb187949e2417b9fa212aa38504a34&csf=1&web=1&e=nqBztS" target="_blank">
+        <a href="https://iserve-my.sharepoint.com/:w:/g/personal/siddhesh_gampawar_pattern_com/EXkYu8XiSXtBn6ISqjhQSjQB2kpW-IRh4NP77ZYUGuPlnA" target="_blank">
             Variation QC SOP Word File
         </a>
     </div>
@@ -161,7 +159,6 @@
     <hr>
     <section class="steps">
         <h2>Variation Quality Check for Amazon</h2>
-
         <div class="step">
             <h3>Step 1: Collection of Relevant Data</h3>
             <ul>
@@ -170,15 +167,13 @@
             </ul>
             <div class="mermaid">
 flowchart TD
-    Start
-    Start --> DownloadMF[Download Masterfile]
-    DownloadMF --> EnsureDetails{All Details Present?}
-    EnsureDetails -- Yes --> Step2[Proceed to Template]
-    EnsureDetails -- No --> UpdateMF[Update Masterfile]
-    UpdateMF --> DownloadMF
+Start --> DownloadMF
+DownloadMF --> EnsureDetails
+EnsureDetails -->|Yes| Step2
+EnsureDetails -->|No| UpdateMF
+UpdateMF --> DownloadMF
             </div>
         </div>
-
         <div class="step">
             <h3>Step 2: Prepare a Template to Compare Data</h3>
             <ul>
@@ -195,9 +190,9 @@ flowchart TD
             </ul>
             <div class="mermaid">
 flowchart TD
-    MF[Masterfile] --> Template[Template File]
-    ASC[ASC VAR] --> Template
-    VW[Variation Wizard (VW VAR)] --> Template
+MF --> Template
+ASC --> Template
+VW --> Template
             </div>
             <figure>
                 <img src="your-screenshot-filename.png" class="screenshot" id="screenshot-step2" alt="Excel template with MF, ASC VAR, VW VAR and more sheets"
@@ -207,7 +202,6 @@ flowchart TD
                 </figcaption>
             </figure>
         </div>
-
         <div class="step">
             <h3>Step 3: Extract Data from Category Listing Report (CLR) & All Listings Report (ALR)</h3>
             <ul>
@@ -216,13 +210,12 @@ flowchart TD
             </ul>
             <div class="mermaid">
 flowchart TD
-    CLR[Download CLR] --> AddCLR[Add CLR to Template]
-    ALR[Download ALR] --> AddALR[Add ALR to Template]
-    AddCLR --> BackendSheet[Backend Data Review]
-    AddALR --> BackendSheet
+CLR --> AddCLR
+ALR --> AddALR
+AddCLR --> BackendSheet
+AddALR --> BackendSheet
             </div>
         </div>
-
         <div class="step">
             <h3>Step 4: Variation QC for Amazon Seller Central Backend</h3>
             <ul>
@@ -238,12 +231,11 @@ flowchart TD
             </ul>
             <div class="mermaid">
 flowchart TD
-    MF[Masterfile] --> CompareCLR[Compare to CLR (ASC VAR Sheet)]
-    CompareCLR -- Parent SKU Match --> TrueA[TRUE: Part of Correct Variation]
-    CompareCLR -- No Match or NA --> FalseA[FALSE: Not Part of Any or Correct Variation]
+MF --> CompareCLR
+CompareCLR -->|Parent SKU Match| TrueA
+CompareCLR -->|No Match or NA| FalseA
             </div>
         </div>
-
         <div class="step">
             <h3>Step 5: Extract Data from Variation Wizard</h3>
             <ul>
@@ -252,11 +244,10 @@ flowchart TD
             </ul>
             <div class="mermaid">
 flowchart TD
-    VW[Variation Wizard Frontend] --> DataExtract[Extract SKUs/ASINs/etc.]
-    DataExtract --> AddToSheet[Add to VW and VW VAR Sheets]
+VW --> DataExtract
+DataExtract --> AddToSheet
             </div>
         </div>
-
         <div class="step">
             <h3>Step 6: Variation Quality Check for Amazon Detail Page Frontend (VW Data)</h3>
             <ul>
@@ -279,17 +270,16 @@ flowchart TD
             </ul>
             <div class="mermaid">
 flowchart TD
-    MF[Masterfile] --> VWCompare[Compare to VW VAR Sheet]
-    VWCompare -- Parent SKU Match --> TrueB[TRUE: Correct Variation]
-    VWCompare -- Parent SKU Missing --> ParentASINChk[Check Parent ASIN]
-    ParentASINChk -- Match --> Comment1B[Comment: Parent SKU not found, but part of our variation]
-    ParentASINChk -- No Match --> Comment2B[Comment: Not a part of our variation]
-    VWCompare -- SKU Not Found --> FalseB[FALSE: Not part of any variation]
-    VWCompare -- Variation Theme Match --> TrueC[TRUE]
-    VWCompare -- Variation Theme Mismatch --> FalseC[FALSE]
+MF --> VWCompare
+VWCompare -->|Parent SKU Match| TrueB
+VWCompare -->|Parent SKU Missing| ParentASINChk
+ParentASINChk -->|Match| Comment1B
+ParentASINChk -->|No Match| Comment2B
+VWCompare -->|SKU Not Found| FalseB
+VWCompare -->|Variation Theme Match| TrueC
+VWCompare -->|Variation Theme Mismatch| FalseC
             </div>
         </div>
-
         <div class="step">
             <h3>Step 7: Report and Submit Task</h3>
             <ul>
@@ -298,11 +288,11 @@ flowchart TD
             </ul>
             <div class="mermaid">
 flowchart TD
-    Review[Review Audit] --> Comments[Add Comments & Markings] --> Submission[Prepare & Submit Final Template]
+Review --> Comments
+Comments --> Submission
             </div>
         </div>
     </section>
-
     <hr>
     <section class="steps">
         <h2>Variation Quality Check for Walmart (Summary)</h2>
@@ -314,15 +304,13 @@ flowchart TD
             </ul>
             <div class="mermaid">
 flowchart TD
-    StartWM
-    StartWM --> DownloadWM[Download Masterfile]
-    DownloadWM --> EnsureWM{All Details Present?}
-    EnsureWM -- Yes --> Step2WM[Proceed to Template]
-    EnsureWM -- No --> UpdateWM[Update Masterfile]
-    UpdateWM --> DownloadWM
+StartWM --> DownloadWM
+DownloadWM --> EnsureWM
+EnsureWM -->|Yes| Step2WM
+EnsureWM -->|No| UpdateWM
+UpdateWM --> DownloadWM
             </div>
         </div>
-
         <div class="step">
             <h3>Step 2: Prepare a Template to Compare Data</h3>
             <ul>
@@ -336,12 +324,11 @@ flowchart TD
             </ul>
             <div class="mermaid">
 flowchart TD
-    MFWM[Masterfile] --> TemplateWM[Template File]
-    VariationAudit[Variation Audit Sheet] --> TemplateWM
-    ItemReport[Item Report Sheet] --> TemplateWM
+MFWM --> TemplateWM
+VariationAudit --> TemplateWM
+ItemReport --> TemplateWM
             </div>
         </div>
-
         <div class="step">
             <h3>Step 3: Extract Data from Item Report</h3>
             <ul>
@@ -350,11 +337,10 @@ flowchart TD
             </ul>
             <div class="mermaid">
 flowchart TD
-    DownloadIR[Download Item Report] --> AddIR[Add to Item Report Sheet]
-    AddIR --> BackendReviewWM[Backend Data Review]
+DownloadIR --> AddIR
+AddIR --> BackendReviewWM
             </div>
         </div>
-
         <div class="step">
             <h3>Step 4: Variation QC for Walmart Seller Central</h3>
             <ul>
@@ -370,13 +356,12 @@ flowchart TD
             </ul>
             <div class="mermaid">
 flowchart TD
-    MFWM[Masterfile] --> IR[Item Report]
-    IR --> CompareIR[Compare to MF in Variation Audit Sheet]
-    CompareIR -- Parent SKU Match --> TrueWM[TRUE: Correct Variation]
-    CompareIR -- No Match or NA --> FalseWM[FALSE: Not Correct or Any Variation]
+MFWM --> IR
+IR --> CompareIR
+CompareIR -->|Parent SKU Match| TrueWM
+CompareIR -->|No Match or NA| FalseWM
             </div>
         </div>
-
         <div class="step">
             <h3>Step 5: Report and Submit Task</h3>
             <ul>
@@ -384,7 +369,8 @@ flowchart TD
             </ul>
             <div class="mermaid">
 flowchart TD
-    ReviewWM[Review Audit (Walmart)] --> CommentsWM[Add Comments/Markings] --> SubmitWM[Prepare & Submit Final Template]
+ReviewWM --> CommentsWM
+CommentsWM --> SubmitWM
             </div>
         </div>
     </section>
